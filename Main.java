@@ -5,14 +5,24 @@ class Main {
 
 		Scanner sc = new Scanner(System.in);
 
-		int[] cargoLocations = { 3, 4, 1 };
-		int[] guessedLocations = new int[3];
+		int[] cargoLocations = new int[3];
+		
 
-		int correctGuessNumber = 0;
-		int attempts = 0;
+		int minCargoLocation = 1;
+		int maxCargoLocation = 7;
+
+		for(int i = 0; i < cargoLocations.length; i += 1) {
+
+			cargoLocations[i] = minCargoLocation + (int)(Math.random() * ((maxCargoLocation - minCargoLocation) + 1));
+
+		}
 
 		while (true) {
-			correctGuessNumber = 0;
+			
+			int[] guessedLocations = new int[3];
+
+			int correctGuessNumber = 0;
+			int attempts = 0;
 
 			if(attempts == 5) {
 				System.out.println("Too many attempts, the cargos have changed their location . RERUN the programm");
