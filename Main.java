@@ -13,6 +13,8 @@ class Main {
 		int minCargoLocation = 1;
 		int maxCargoLocation = 7;
 
+
+		// writing random numbers from min to max into cargoLocations
 		for(int i = 0; i < cargoLocations.length; i += 1) {
 
 			cargoLocations[i] = minCargoLocation + (int)(Math.random() * ((maxCargoLocation - minCargoLocation) + 1));
@@ -20,14 +22,11 @@ class Main {
 		}
 
 		while (true) {
-
+			//reading users' guesses into set to automatically exclude duplicates
 			LinkedHashSet<Integer> guessedLocationsSet = new LinkedHashSet<Integer>();
-
-
 
 			int correctGuessNumber = 0;
 			
-
 			if(attempts == 5) {
 				System.out.println("Too many attempts, the cargos have changed their location . RERUN the programm");
 				break;
@@ -41,6 +40,7 @@ class Main {
 
 			}
 
+			//transforming guessesSet into array to run through it
 			Integer[] guessedLocationsArray = new Integer[guessedLocationsSet.size()];
 			guessedLocationsArray = guessedLocationsSet.toArray(guessedLocationsArray);
 
@@ -57,8 +57,10 @@ class Main {
 			}
 
 			if(correctGuessNumber == 3) {
+
 				System.out.println("You have correctly guessed all 3 locations");
 				break;
+				
 			}
 
 			attempts += 1;
