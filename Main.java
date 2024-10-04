@@ -1,3 +1,4 @@
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 class Main {
@@ -7,6 +8,7 @@ class Main {
 
 		int[] cargoLocations = new int[3];
 		
+		int attempts = 0;
 
 		int minCargoLocation = 1;
 		int maxCargoLocation = 7;
@@ -18,11 +20,13 @@ class Main {
 		}
 
 		while (true) {
-			
-			int[] guessedLocations = new int[3];
+
+			LinkedHashSet<Integer> guessedLocationsSet = new LinkedHashSet<Integer>();
+
+
 
 			int correctGuessNumber = 0;
-			int attempts = 0;
+			
 
 			if(attempts == 5) {
 				System.out.println("Too many attempts, the cargos have changed their location . RERUN the programm");
@@ -31,15 +35,20 @@ class Main {
 
 			for (int i = 0; i < cargoLocations.length; i += 1) {
 
-				guessedLocations[i] = sc.nextInt();
+				int userGuess = sc.nextInt();
+
+				guessedLocationsSet.add(userGuess);
 
 			}
 
-			for (int i = 0; i < cargoLocations.length; i += 1) {
+			Integer[] guessedLocationsArray = new Integer[guessedLocationsSet.size()];
+			guessedLocationsArray = guessedLocationsSet.toArray(guessedLocationsArray);
 
-				for (int j = 0; j < cargoLocations.length; j += 1) {
+			for (int i = 0; i < guessedLocationsArray.length; i += 1) {
 
-					if (guessedLocations[i] == cargoLocations[j])
+				for (int j = 0; j < guessedLocationsArray.length; j += 1) {
+
+					if (guessedLocationsArray[i] == cargoLocations[j])
 
 						correctGuessNumber += 1;
 
